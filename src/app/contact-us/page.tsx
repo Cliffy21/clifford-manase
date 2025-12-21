@@ -1,4 +1,4 @@
-
+'use client'
 
 import { Clock8Icon, MapPinIcon, MailIcon, PhoneIcon } from 'lucide-react'
 
