@@ -1,0 +1,471 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cyber-purple: #a855f7;
+  --cyber-pink: #ec4899;
+  --cyber-cyan: #22d3ee;
+  --cyber-blue: #3b82f6;
+  --cyber-green: #10b981;
+  --cyber-orange: #f97316;
+  --cyber-dark: #0a0a0f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Fira Code', monospace;
+  background: linear-gradient(180deg, #0a0a0a 0%, #050505 50%, #0a0a0a 100%);
+  color: #e2e8f0;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light mode styles */
+html:not(.dark) body {
+  background: linear-gradient(180deg, #fafafa 0%, #f5f5f5 50%, #fafafa 100%);
+  color: #1a1a1a;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--cyber-purple), var(--cyber-pink));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--cyber-pink), var(--cyber-purple));
+}
+
+/* Glowing Text Effect */
+.glow-text {
+  text-shadow: 
+    0 0 10px var(--cyber-purple),
+    0 0 20px var(--cyber-purple),
+    0 0 40px var(--cyber-purple);
+}
+
+.glow-text-cyan {
+  text-shadow: 
+    0 0 10px var(--cyber-cyan),
+    0 0 20px var(--cyber-cyan),
+    0 0 40px var(--cyber-cyan);
+}
+
+.glow-text-pink {
+  text-shadow: 
+    0 0 10px var(--cyber-pink),
+    0 0 20px var(--cyber-pink),
+    0 0 40px var(--cyber-pink);
+}
+
+/* Typing Animation */
+.typing-effect {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid var(--cyber-cyan);
+  animation: 
+    typing 3.5s steps(40, end),
+    blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--cyber-cyan) }
+}
+
+/* Glitch Effect */
+.glitch {
+  position: relative;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  animation: glitch-1 0.4s infinite linear alternate-reverse;
+  color: var(--cyber-cyan);
+  z-index: -1;
+}
+
+.glitch::after {
+  animation: glitch-2 0.4s infinite linear alternate-reverse;
+  color: var(--cyber-pink);
+  z-index: -2;
+}
+
+@keyframes glitch-1 {
+  0% { clip-path: inset(20% 0 60% 0); transform: translate(-3px, 0); }
+  20% { clip-path: inset(60% 0 10% 0); transform: translate(3px, 0); }
+  40% { clip-path: inset(10% 0 80% 0); transform: translate(-3px, 0); }
+  60% { clip-path: inset(80% 0 5% 0); transform: translate(3px, 0); }
+  80% { clip-path: inset(5% 0 70% 0); transform: translate(-3px, 0); }
+  100% { clip-path: inset(70% 0 15% 0); transform: translate(3px, 0); }
+}
+
+@keyframes glitch-2 {
+  0% { clip-path: inset(60% 0 20% 0); transform: translate(3px, 0); }
+  20% { clip-path: inset(10% 0 60% 0); transform: translate(-3px, 0); }
+  40% { clip-path: inset(80% 0 10% 0); transform: translate(3px, 0); }
+  60% { clip-path: inset(5% 0 80% 0); transform: translate(-3px, 0); }
+  80% { clip-path: inset(70% 0 5% 0); transform: translate(3px, 0); }
+  100% { clip-path: inset(15% 0 70% 0); transform: translate(-3px, 0); }
+}
+
+/* Neon Border */
+.neon-border {
+  position: relative;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.1), rgba(236, 72, 153, 0.1));
+  border: 1px solid transparent;
+  border-radius: 12px;
+}
+
+.neon-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--cyber-purple), var(--cyber-pink), var(--cyber-cyan), var(--cyber-purple));
+  background-size: 200% 200%;
+  animation: border-flow 3s linear infinite;
+  z-index: -1;
+  opacity: 0.7;
+}
+
+.neon-border::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: var(--cyber-dark);
+  z-index: -1;
+}
+
+/* Cyber Button */
+.cyber-btn {
+  position: relative;
+  padding: 12px 32px;
+  background: linear-gradient(135deg, var(--cyber-purple), var(--cyber-pink));
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-family: 'Fira Code', monospace;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.cyber-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.cyber-btn:hover::before {
+  left: 100%;
+}
+
+.cyber-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 10px 30px rgba(168, 85, 247, 0.4),
+    0 0 20px rgba(236, 72, 153, 0.3);
+}
+
+/* Scanner Line */
+.scanner-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyber-cyan), transparent);
+  animation: scan 2s linear infinite;
+}
+
+/* Holographic Card */
+.holo-card {
+  background: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.1) 0%,
+    rgba(236, 72, 153, 0.1) 25%,
+    rgba(34, 211, 238, 0.1) 50%,
+    rgba(59, 130, 246, 0.1) 75%,
+    rgba(168, 85, 247, 0.1) 100%
+  );
+  background-size: 400% 400%;
+  animation: gradient-x 8s ease infinite;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+/* Terminal Effect */
+.terminal {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--cyber-green);
+  border-radius: 8px;
+  padding: 20px;
+  font-family: 'Fira Code', monospace;
+}
+
+.terminal::before {
+  content: '● ● ●';
+  display: block;
+  margin-bottom: 15px;
+  letter-spacing: 6px;
+  color: var(--cyber-green);
+}
+
+.terminal-prompt {
+  color: var(--cyber-green);
+}
+
+.terminal-prompt::before {
+  content: '> ';
+  color: var(--cyber-cyan);
+}
+
+/* Particle Effect Container */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Grid Background */
+.cyber-grid {
+  background-image: 
+    linear-gradient(rgba(168, 85, 247, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168, 85, 247, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Floating Animation */
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Skill Bar */
+.skill-bar {
+  height: 8px;
+  background: rgba(168, 85, 247, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--cyber-purple), var(--cyber-cyan));
+  border-radius: 4px;
+  transition: width 1s ease-out;
+}
+
+/* Project Card Hover */
+.project-card {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.project-card:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+/* Section Divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyber-purple), var(--cyber-pink), var(--cyber-cyan), transparent);
+}
+
+/* Text Gradient */
+.text-gradient {
+  background: linear-gradient(135deg, var(--cyber-purple), var(--cyber-pink), var(--cyber-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Shimmer animation for skill bars */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Marquee animation for tech stack */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+/* Enhanced hover effects */
+@keyframes border-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Smooth entrance animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Pulse glow animation */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(168, 85, 247, 0.8);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .typing-effect {
+    white-space: normal;
+    border-right: none;
+    animation: none;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 224 71.4% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+    --primary: 220.9 39.3% 11%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 224 71.4% 4.1%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 210 20% 98%;
+    --primary-foreground: 220.9 39.3% 11%;
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 216 12.2% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
