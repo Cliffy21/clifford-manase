@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { ThemeProvider } from "@/components/theme-provider"
+import CommercialPopup from "@/components/CommercialPopup"
 
 export const metadata: Metadata = {
   title: 'Clifford Manase | Frontend Developer & UI/UX Designer',
@@ -37,6 +38,7 @@ export default function RootLayout({
             disableTransitionOnChange
           >
         {children}
+        <CommercialPopup />
         </ThemeProvider>
       </body>
     </html>
